@@ -17,9 +17,21 @@
          * 
          * La fct fread() : va permettre la lecture du fichier.
          * La fct fclose() : va fermer le fichier.
+         * La fct fseek() : va permettre de modifier la place du curseur, cela permet d'écrire à n'importe 
+         * quelle endroit d'un fichier.
+         * La fct fwrite() : va permettre d'écrire dans le fichier: 1er arg = le nom du fichier ds lequelle ns allon
+         * écrire, 2e arg = txt que ns allons y inscrire.
          */
-           $definition =  fopen("definition-php.php", "r+");
+           $definition =  fopen("definition-php.txt", "r+");
            $affichageDef = fread($definition, 1000);
+          /**
+           *  while (!feof($definition)) {
+           *        echo fgets(($definition));
+           *  }
+           *  */
+           fseek($definition, 0);
+           fwrite($definition, "Ces mots ont été ajoutés par après ;)!!!!!");
+           echo '<br/>';
            echo $affichageDef;
            fclose($definition);
         ?>
