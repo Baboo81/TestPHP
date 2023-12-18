@@ -1,0 +1,1 @@
+<p>Différence entre les instructions : include & require</p>

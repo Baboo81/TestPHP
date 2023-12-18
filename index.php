@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
     <?php
+    /**
+     * Les instructions; include & require servent à inclure des fichiers mais la 
+     * différence est que si PHP n'arrive pas à récupérer les données avec include 
+     * le script continuera de s'executer mais pas avec require.
+     */
         include("./assets/components/head.php");
         include("./assets/components/nav.php");
     ?>

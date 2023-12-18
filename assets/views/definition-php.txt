@@ -1,0 +1,4 @@
+PHP: PhP HyperTxt Preprocessor, plus connu sous son sigle PHP
+(acronyme recursif), est un langage de programmation libre 
+principalement utilisé pour produire des pages web dynamiques via
+un serveur HTTP, PHP est un langage impératif orienté objet comme C++.
