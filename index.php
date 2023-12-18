@@ -300,8 +300,18 @@
                         echo __DIR__ . '<br/>';
                         echo __LINE__ . '<br/>';
                      ?>
+                     <h5 class="p-4">Les formulaires</h5>
+                     <?php
+                        echo "Cfr : pages; target et formulaire";
+                     ?>
                 </div>
             </article>
+        </section>
+        <section>
+            <?php
+                include("./assets/views/formulaire.php");
+                
+            ?>
         </section>
     </body>
         <?php
