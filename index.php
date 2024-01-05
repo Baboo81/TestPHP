@@ -1,3 +1,20 @@
+<?php
+    //Initiation d'une session:
+    session_start();
+    session_destroy();
+    //Initiation de cookies:
+    $nomCookie = "utilisateur";
+    $valeurCookie = "Chris";
+    setcookie($nomCookie, $valeurCookie, time() + 3600, "/", "nomDuSite.be", false, true);
+    //Pour supprimer ce cookie il faut juste lui mettre le même temps mais passé : setcookie($nomCookie, $valeurCookie, time() - 3600);
+
+    $nomCookie2 = "test";
+    $valeurCookie2 = "Ceci est un test";
+    setcookie($nomCookie2, $valeurCookie2);
+
+    echo $_COOKIE["test"];
+?>
+
 <!DOCTYPE html>
 <html>
     <?php
@@ -17,9 +34,9 @@
                     <h3 class="p-4">Les tableaux</h3>
                     <?php
                       $membre = array(
-                            array('Chris', 42, 'chrisrodriguez@hotmail.be'),
-                            array('Chonchon', 5, 'chonchon@hotmail.com'),
-                            array('Boubouille', 6, 'boubouille@hotmail.com')
+                                array('Chris', 42, 'chrisrodriguez@hotmail.be'),
+                                array('Chonchon', 5, 'chonchon@hotmail.com'),
+                                array('Boubouille', 6, 'boubouille@hotmail.com')
                       );
                       echo $membre[0][0]. ' a ' .$membre[0][1]. ' ans. Son mail est ' .$membre[0][2]. '<br/>'; 
 
@@ -337,14 +354,16 @@
                       //$_REQUEST permet de récolter des infos après l'envoi d'un form HTML.
                       //$_POST collecte les données après soumission d'un form.
                       //$_COOKIE:
-                      //Création d'un cookie, la variable setcookie peut contenir jusqu'à 7 paramètres:
-                      $nomCookie = "utilisateur";
-                      $valeurCookie = "Chris";
-                      setcookie($nomCookie, $valeurCookie, time() + 3600, "/", "nomDuSite.be", false, true);
-
-                      $nomCookie2 = "test";
-                      $valeurCookie2 = "Ceci est un test";
-                      setcookie()
+                      //Création d'un cookie, la variable setcookie peut contenir jusqu'à 7 paramètres: cfr le haut de page
+                      //$_SESSION: permet de stocker des infos de page en page. cfr haut de page.
+                        $_SESSION['prenom'] = "Chris";
+                        $_SESSION['age'] = 42;
+                        $_SESSION['sport'] = "Vélo";
+                     ?>
+                     <h5 class="py-4">POO</h5>
+                     <?php
+                     /**La POO, permet de créer des objets à partir de classe */
+                     
                      ?>
                 </div>
             </article>
