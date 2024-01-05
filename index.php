@@ -310,6 +310,43 @@
                         echo "Cfr : pages; target et formulaire";
                      ?>
                 </div>
+                <div class="col-md-6 py-4">
+                    <h1 class="py-4">PhP suite ...</h1>
+                    <h5 class="py-4">Les variables super globales</h5>
+                     <?php
+                     /**Une variable super globale est une variable accessible partout contrairement
+                      *à une variable déclarée localement (ds une fct) ou globalement (ds l'environnement global).
+                        A utiliser avec parcimonie !
+                      */
+                      //$GLOBALS est une variable tableau, qui permet d'acceder à n'importe quelle variable
+                        $x = 10;
+                        $y = 20;
+
+                        function Mult() {
+                          $GLOBALS['z'] = $GLOBALS['x'] * $GLOBALS['y'];
+                        }
+                        Mult();
+                         echo "Le résultat = " . $z;
+                         echo '<br/>';
+                      //$_SERVER est une variable tableau, qui contient des infos du type server ou systeme
+                      echo $_SERVER['PHP_SELF']. '<br/>';
+                      echo $_SERVER['SERVER_ADDR']. '<br/>';
+                      echo $_SERVER['SERVER_NAME']. '<br/>';
+                      echo $_SERVER['SCRIPT_NAME']. '<br/>';
+                      echo $_SERVER['HTTP_HOST']. '<br/>';
+                      //$_REQUEST permet de récolter des infos après l'envoi d'un form HTML.
+                      //$_POST collecte les données après soumission d'un form.
+                      //$_COOKIE:
+                      //Création d'un cookie, la variable setcookie peut contenir jusqu'à 7 paramètres:
+                      $nomCookie = "utilisateur";
+                      $valeurCookie = "Chris";
+                      setcookie($nomCookie, $valeurCookie, time() + 3600, "/", "nomDuSite.be", false, true);
+
+                      $nomCookie2 = "test";
+                      $valeurCookie2 = "Ceci est un test";
+                      setcookie()
+                     ?>
+                </div>
             </article>
         </section>
         <section>
