@@ -9,11 +9,14 @@
             include_once ('visiteur.class.php');
             //Instancier la classe:
             $visiteur1 = new Visiteur;
-            $visiteur2 = new Visiteur;
+            
 
             $visiteur1-> set_prenom('Chris');
-            $visiteur2-> set_prenom('Lulu');
+            $visiteur1-> set_nom('Rodriguez');
 
+            echo 'Ton nom est '. $visiteur1->nom . '<br/>';
+            echo 'Ton prénom est ' . $visiteur1->prenom . '<br/>';
+            
         ?>
     </body>
 </html>
