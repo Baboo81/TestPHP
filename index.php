@@ -406,18 +406,52 @@
                         $serveur = "localhost";
                         $login = "root";
                         $passWord = "root";
-                        /**Test de la connexion :*/
-                        try {
-                                /**Initialisation à la DB mySQL en créant un objet :*/
-                        $connexion = new PDO("mysql:host=$serveur;dbname=test", $login, $passWord);
-                        $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-                        echo "Connexion à la BD réussie :)"; 
-                        }
+                        /**Test de la connexion à la DB test :*/
+                       /** try {
+                                *Initialisation à la DB mySQL en créant un objet :
+                        *$connexion = new PDO("mysql:host=$serveur;dbname=test", $login, $passWord);
+                        *$connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+                        *echo "Connexion à la BD réussie :)"; 
+                        * }
                         
+                        *catch (PDOException $e) {
+                            *echo 'Echec de la connexion : ' . $e->getMessage();
+                        * }*/
+                            /////////////////////////////////////////////////////////:
+                        //Connexion à mySQL:
+                        /** 
+                        *echo "<h5>Création d'une BD en SQL</h5>";
+                        *try {
+                            *$connexion = new PDO("mysql:host=$serveur", $login, $passWord);
+                            *$connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            *Permier ordre en SQL avec la méthode exec :
+                            *$connexion ->exec("CREATE DATABASE test2");
+                            *echo "Base de données créée avec succès ! Yehhhhhhhhh !!!!!!";
+                        * }
+
+                        *catch (PDOException $e) {
+                            *echo "Echec de la connexion : " . $e->getMessage();
+                        * }*/
+                        echo "<h5>Connexion à la DB : test2</h5>" . '<br/>';
+                        try {
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            //Requêtes SQL :
+                            $request = "CREATE TABLE Visiteurs(
+                                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,/**Col 1*/
+                                nom VARCHAR(50),/**Col 2*/
+                                prenom VARCHAR(50),/**Col 3*/
+                                email VARCHAR(70)/**Col 4*/
+                                )";
+                            $connexion->exec($request);
+                                echo "Table visiteur créée ! ";
+                            }
+
                         catch (PDOException $e) {
-                            echo 'Echec de la connexion : ' . $e->getMessage();
+                            echo "Echec de la connexion : " . $e->getMessage();
                         }
-                    
                      ?>
                 </div>
             </article>
