@@ -363,7 +363,41 @@
                      <h5 class="py-4">POO</h5>
                      <?php
                      /**La POO, permet de créer des objets à partir de classe */
-                     
+                     echo "cfr: visiteur.php et visiteur.class.php" . '<br/>';
+                     ?>
+                     <h5 class="py-4">Gestion des erreurs</h5>
+                     <?php
+                      if(!file_exists("./assets/views/definition-php.txt")) {
+                            die("Fichier non trouvé !");
+                      } else {
+                            $fichier = fopen("./assets/views/definition-php.txt", "r");
+                            $fichierAffichage = fread($fichier, 1000);
+                      }
+                      echo $fichierAffichage;
+                     ?>
+                     <h5 class="py-4">Gestion des exceptions</h5>
+                     <?php
+                        function Division ($x, $y) {
+                            if($y == 0) {
+                                /**Throw permet de lancer l'exception si try a trouver une erreur*/
+                                throw new Exception("Division par zéro impossible !");
+                            }
+                            return $x/$y;
+                        }
+
+                        /**Bloc try; vérifie si il y a une erreur et donc si il faut 
+                         * déclencher une exception
+                        */
+                        try {
+                           echo Division(2,4) . '<br/>';
+                           echo Division(2,0) . '<br/>';
+                        }
+                        /**Le bloc catch va attraper l'exception et la stocker dans l'objet $e,
+                         * $e sera récupérer par la méthode getMessage qui appartient à la classe Exception.
+                        */
+                        catch(Exception $e) {
+                            echo "Message d'erreur : " . $e -> getMessage();
+                        }
                      ?>
                 </div>
             </article>

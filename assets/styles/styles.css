@@ -3,3 +3,13 @@ body
     background-color: lightslategray;
     text-align: start;
 }
+
+h1
+{
+    color: blueviolet;
+}
+
+h3, h5
+{
+    color: aliceblue;
+}
