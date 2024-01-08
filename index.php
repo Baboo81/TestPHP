@@ -398,6 +398,26 @@
                         catch(Exception $e) {
                             echo "Message d'erreur : " . $e -> getMessage();
                         }
+                        echo '<br/>';
+                     ?>
+                     <h1 class="py-5">Les BD avec MySQL</h1>
+                     <?php
+                        /**Connexion avec PDO, PDO ext une extension orientée objet :*/
+                        $serveur = "localhost";
+                        $login = "root";
+                        $passWord = "root";
+                        /**Test de la connexion :*/
+                        try {
+                                /**Initialisation à la DB mySQL en créant un objet :*/
+                        $connexion = new PDO("mysql:host=$serveur;dbname=test", $login, $passWord);
+                        $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+                        echo "Connexion à la BD réussie :)"; 
+                        }
+                        
+                        catch (PDOException $e) {
+                            echo 'Echec de la connexion : ' . $e->getMessage();
+                        }
+                    
                      ?>
                 </div>
             </article>
