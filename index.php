@@ -433,7 +433,7 @@
                         *catch (PDOException $e) {
                             *echo "Echec de la connexion : " . $e->getMessage();
                         * }*/
-                        echo "<h5>Connexion à la DB : test2</h5>" . '<br/>';
+                        /*echo "<h5>Connexion à la DB : test2</h5>" . '<br/>';
                         try {
                             $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
                             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -441,16 +441,34 @@
                             //Requêtes SQL :
                             $request = "CREATE TABLE Visiteurs(
                                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,/**Col 1*/
-                                nom VARCHAR(50),/**Col 2*/
-                                prenom VARCHAR(50),/**Col 3*/
-                                email VARCHAR(70)/**Col 4*/
-                                )";
-                            $connexion->exec($request);
-                                echo "Table visiteur créée ! ";
-                            }
+                                //nom VARCHAR(50),/**Col 2*/
+                                //prenom VARCHAR(50),/**Col 3*/
+                               //email VARCHAR(70)/**Col 4*/
+                               // )";
+                            //$connexion->exec($request);
+                               // echo "Table visiteur créée ! ";
+                            //}
 
-                        catch (PDOException $e) {
+                       /*catch (PDOException $e) {
                             echo "Echec de la connexion : " . $e->getMessage();
+                        }*/
+                        echo "<h5>Insertion de valeurs dans la BD</h5>" . '<br/>';
+
+                        try {
+                            $connexion = new PDO("mysql:host=$serveur; dbname=test2", $login, $passWord);
+                            $connexion-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            $insertion = "INSERT INTO Visiteurs(nom,prenom,email)
+                                          VALUES('Dandoy', 'Luc', 'luc.dandoy@hotmail.com'),
+                                                ('Gomez', 'Ramiro', 'ramiro.gomez@hotmail.com'),
+                                                ('Coton', 'Marie', 'marie.coton@hotmail.com')";
+
+                            $connexion->exec($insertion);
+                            echo "Les valeurs insérées avec succès yeahhh";
+                        }
+
+                        catch(PDOException $e) {
+                            echo "Echec de la connexion :( " . $e->getMessage();
                         }
                      ?>
                 </div>
