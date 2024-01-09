@@ -560,7 +560,16 @@
                         }*/
 
                         echo "<h5>Relations entre tables</h5>";
-                        
+
+                        try {
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        }
+
+                        catch(PDOException $erreur) {
+                            echo "Echec de connexion :(( " . $erreur->getMessage();
+                        }
                      ?>
                 </div>
             </article>
