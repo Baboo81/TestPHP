@@ -543,6 +543,23 @@
                             echo "Echec de la connexion :( " . $e->getMessage();
                         }*/
 
+                        /*try {
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            //$modifAge = "UPDATE Visiteurs SET age=38 WHERE ID=1";
+                            $suppr = "DROP TABLE Visiteurs";
+
+                            $request = $connexion->prepare($suppr);
+                            $request->execute();
+                            echo "Modification réussie :))";
+                        }
+
+                        catch(PDOException $e) {
+                            echo "Echec de la connexion " . $e->getMessage();
+                        }*/
+
+                        echo "<h5>Relations entre tables</h5>";
                         
                      ?>
                 </div>
