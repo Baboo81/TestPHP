@@ -452,24 +452,98 @@
                        /*catch (PDOException $e) {
                             echo "Echec de la connexion : " . $e->getMessage();
                         }*/
-                        echo "<h5>Insertion de valeurs dans la BD</h5>" . '<br/>';
+                        /**echo "<h5>Insertion de valeurs dans la BD</h5>" . '<br/>';
+
+                        
 
                         try {
                             $connexion = new PDO("mysql:host=$serveur; dbname=test2", $login, $passWord);
                             $connexion-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $insertion = "INSERT INTO Visiteurs(nom,prenom,email)
-                                          VALUES('Dandoy', 'Luc', 'luc.dandoy@hotmail.com'),
-                                                ('Gomez', 'Ramiro', 'ramiro.gomez@hotmail.com'),
-                                                ('Coton', 'Marie', 'marie.coton@hotmail.com')";
+                            //Sécurisation de l'envoi de données SQL:
+                            //1.Préparation de la requête:
+                            $request = $connexion->prepare(
+                                    "INSERT INTO Visiteurs(nom, prenom, email)
+                                     VALUES(:nom, :prenom, :email)"
+                            );
+                            //2.Lier les marqueurs avec bindParam:
+                            $request->bindParam(':nom',$nom);
+                            $request->bindParam(':prenom',$prenom);
+                            $request->bindParam(':email',$email);
 
-                            $connexion->exec($insertion);
-                            echo "Les valeurs insérées avec succès yeahhh";
+                            $nom = "Pape";
+                            $prenom = "Jean";
+                            $email = "jean.pape@gmail.com";
+
+                            $request->execute();
                         }
 
                         catch(PDOException $e) {
                             echo "Echec de la connexion :( " . $e->getMessage();
+                        }*/
+
+                        /*echo "<h5>Récupérer des info dans la DB</h5>" . '<br/>';
+
+                        try{
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            $request = $connexion->prepare("
+                            SELECT * FROM Visiteurs");
+
+                            $request->execute();
+                            $result = $request->fetchAll();//Permet d'afficher le resultat sous forme d'un tableau
+
+                            echo '<pre>';
+                            print_r($result);
+                            echo '</pre>';
+
                         }
+
+                        catch(PDOException $e) {
+                            echo "Echec de la connexion :(( " . $e->getMessage();
+                        }*/
+                        
+                        /*echo "<h5>Ajouter des colonnes à la DB</h5>";
+
+                        try {
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            $request = "
+                                ALTER TABLE Visiteurs ADD sexe VARCHAR(10)";//Ajout de colonnes
+
+                            $connexion->exec($request);
+                            echo "Ajout réussi :)))";
+                        }
+
+                        catch(PDOException $e) {
+                            echo "Echec de la connexion :(( " . $e->getMessage();
+                        }*/
+
+                        /*try {
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            $request1 = $connexion->prepare(
+                                "SELECT prenom FROM Visiteurs LIMIT 4,1"
+                            );
+                            
+                            $request1->execute();
+
+                            $result = $request1->fetchAll();
+
+                            echo "<pre>";
+                            print_r($result);
+                            echo "</pre>";
+
+                        }
+
+                        catch(PDOException $e) {
+                            echo "Echec de la connexion :( " . $e->getMessage();
+                        }*/
+
+                        
                      ?>
                 </div>
             </article>
