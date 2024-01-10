@@ -562,9 +562,23 @@
                         echo "<h5>Relations entre tables</h5>";
 
                         try {
-                            $connexion = new PDO("mysql:host=$serveur;dbname=test2", $login, $passWord);
+                            $connexion = new PDO("mysql:host=$serveur;dbname=test2;charset=utf8", $login, $passWord);
                             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+                            $jointureInterne = "
+                            SELECT Inscrits.prenom, Commentaires.commentaire
+                            FROM Inscrits
+                            INNER JOIN Commentaires
+                            ON Inscrits.id = Commentaires.id_inscrit";
+
+                            $request = $connexion->prepare($jointureInterne);
+                            $request->execute();
+
+                            $result = $request->fetchAll();
+
+                            echo '<pre>';
+                            print_r($result);
+                            echo '</pre>';
                         }
 
                         catch(PDOException $erreur) {
