@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <form class="col-mg-6 border p-4" method= "POST" action= "#"> 
+                <form class="col-mg-6 border p-4" method= "POST" action= "#">
                 <h1 class="text-align-center p-4">Formulaire</h1>
                     <div class="p-4">
                         <label class="fw-b p-3" for="prenom">Entrez votre prénom :</label>
@@ -29,7 +29,7 @@
                             <p>Bonjour 
                             <?php
                             /**
-                             * La fct html specialchars va empêcher d'injecter du code malvéillant 
+                             * La fct html specialchars va empêcher d'injecter du code malvéillant
                              * au cas ou l'utilisateur voudrait injecter du code HTML ou JS.
                              * La fct strip_tags fonctionne de la même façon mais en occultant le code HTML
                              * que l'utilisateur aurait ajouté.
